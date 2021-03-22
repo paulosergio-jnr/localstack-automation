@@ -1,0 +1,13 @@
+{
+  "QueueUrl": "http://localhost:4566/000000000000/q-test.fifo",
+  "MessageBody": "Isso eh um teste",
+  "DelaySeconds": 0,
+  "MessageAttributes": {
+    "CorrelationId": {
+      "StringValue": "Correlation 01",
+      "DataType": "String"
+    }
+  },
+  "MessageDeduplicationId": "",
+  "MessageGroupId": "Grupo01"
+}

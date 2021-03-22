@@ -1,0 +1,8 @@
+{
+  "QueueName": "fila-teste",
+  "Attributes": {
+    "FifoQueue": "false",
+    "MaximumMessageSize": "1024",
+    "MessageRetentionPeriod": "345600"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "TableName": "tabela_teste_01",
+  "Item" : {
+    "id": {
+      "S": "a536e6c2-c17a-4b74-84e0-5d2e3a6d6226"
+    },
+    "status": {
+      "S": "teste"
+    },
+    "ttl": {
+      "N": "1900268375"
+    }
+  }
+}

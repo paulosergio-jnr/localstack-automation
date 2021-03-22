@@ -1,0 +1,8 @@
+{
+  "QueueName": "q-test.fifo",
+  "Attributes": {
+    "FifoQueue": "true",
+    "MaximumMessageSize": "1024",
+    "MessageRetentionPeriod": "345600"
+  }
+}

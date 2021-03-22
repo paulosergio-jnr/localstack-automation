@@ -1,0 +1,82 @@
+localstack/localstack
+
+--env SERVICES=sqs,dynamodb,s3
+--name aws-stack
+--publish 
+--expose 4566
+
+----------- Docker -----------
+
+docker run \
+  --env SERVICES=sqs,dynamodb,s3,sns \
+  --env DEFAULT_REGION=sa-east-1 \
+  --name aws-stack \
+  -p 4566:4566 \
+  -d localstack/localstack
+
+
+----------- SQS - Criacao Fila -----------
+
+aws sqs create-queue 
+  --queue-name q-test.fifo 
+  --attributes MaximumMessageSize=1024,FifoQueue=true 
+  --endpoint-url http://localhost:4566
+  
+aws sqs create-queue --cli-input-json file://sqs-create-queue.json --endpoint-url http://localhost:4566
+
+
+sqs-create-queue.json
+{
+  "QueueName": "q-test.fifo",
+  "Attributes": {
+    "FifoQueue": true,
+    "MaximumMessageSize": "1024",
+    "MessageRetentionPeriod": "345600"
+  }
+}
+
+
+----------- SQS - Envio de Mensagem -----------
+
+aws sqs send-message \
+  --message-body "Isso eh um teste" \
+  --message-attributes "CorrelationId={StringValue=Isso eh um teste,DataType=String}" \
+  --message-group-id Grupo01 \
+  --queue-url http://localhost:4566/000000000000/fila-teste \
+  --endpoint-url http://localhost:4566
+  
+aws sqs send-message --cli-input-json file://sqs-send-message.json --endpoint-url http://localhost:4566
+
+send-message.json
+{
+  "QueueUrl": "http://localhost:4566/000000000000/q-test.fifo",
+  "MessageBody": "Isso eh um teste",
+  "DelaySeconds": 0,
+  "MessageAttributes": {
+    "CorrelationId": {
+      "StringValue": "Correlation 01",
+      "DataType": "String"
+    }
+  },
+  "MessageDeduplicationId": "",
+  "MessageGroupId": "Grupo01"
+}
+
+
+----------- SQS - Leitura de Mensagem -----------
+
+aws sqs receive-message 
+  --message-attribute-names ALL
+  --queue-url http://localhost:4566/000000000000/q-test.fifo 
+  --endpoint-url http://localhost:4566
+
+
+----------- SQS - Remover Fila -----------
+
+aws sqs purge-queue 
+  --queue-url http://localhost:4566/000000000000/q-test.fifo 
+  --endpoint-url http://localhost:4566
+  
+
+----------- SQS -  -----------
+

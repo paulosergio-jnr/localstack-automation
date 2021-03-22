@@ -1,0 +1,58 @@
+{
+  "AttributeDefinitions" : [
+    {
+      "AttributeName" : "id",
+      "AttributeType" : "S"
+    },
+    {
+      "AttributeName" : "status",
+      "AttributeType" : "S"
+    },
+    {
+      "AttributeName" : "ttl",
+      "AttributeType" : "N"
+    }
+  ],
+  "BillingMode" : "PAY_PER_REQUEST",
+  "GlobalSecondaryIndexes" : [
+    {
+      "IndexName": "index_teste",
+      "KeySchema": [
+        {
+          "AttributeName": "status",
+          "KeyType": "HASH"
+        },
+        {
+          "AttributeName": "ttl",
+          "KeyType": "RANGE"
+        }
+      ],
+      "Projection": {
+        "ProjectionType": "KEYS_ONLY"
+      },
+      "ProvisionedThroughput": {
+        "ReadCapacityUnits": 5,
+        "WriteCapacityUnits": 5
+      }
+    }
+  ],
+  "KeySchema" : [
+    {
+      "AttributeName" : "id",
+      "KeyType" : "HASH"
+    },
+    {
+      "AttributeName" : "status",
+      "KeyType" : "RANGE"
+    }
+  ],
+  "ProvisionedThroughput" : {
+    "ReadCapacityUnits" : 5,
+    "WriteCapacityUnits" : 5
+  },
+  "StreamSpecification" : {
+    "StreamEnabled": true,
+    "StreamViewType" : "NEW_AND_OLD_IMAGES"
+  },
+  "TableName" : "tabela_teste_01"
+}

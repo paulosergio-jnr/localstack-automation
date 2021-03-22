@@ -1,0 +1,14 @@
+version: '2.1'
+
+services:
+  localstack:
+    container_name: "aws-stack"
+    image: localstack/localstack
+    network_mode: bridge
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sqs,sns,dynamodb,s3
+      - DEFAULT_REGION=sa-east-1
+    entrypoint:
+      entrypoint.sh
