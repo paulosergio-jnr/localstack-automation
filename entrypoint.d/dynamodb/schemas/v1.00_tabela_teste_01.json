@@ -50,9 +50,5 @@
     "ReadCapacityUnits" : 5,
     "WriteCapacityUnits" : 5
   },
-  "StreamSpecification" : {
-    "StreamEnabled": true,
-    "StreamViewType" : "NEW_AND_OLD_IMAGES"
-  },
   "TableName" : "tabela_teste_01"
 }
