@@ -7,8 +7,12 @@ echo -e ""
 
 BASE_PATH=/docker-entrypoint-initaws.d
 
-if [ -e "$BASE_PATH/dynamodb" ]; then
+if [[ $SERVICES =~ dynamodb && -e "$BASE_PATH/dynamodb" ]]; then
   bash $BASE_PATH/dynamodb/dynamodb.sh
+fi
+
+if [[ $SERVICES =~ sqs && -e "$BASE_PATH/sqs" ]]; then
+  bash $BASE_PATH/sqs/sqs.sh
 fi
 
 echo -e ""
