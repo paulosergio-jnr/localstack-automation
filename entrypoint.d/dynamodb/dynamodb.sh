@@ -1,14 +1,14 @@
 #!/bin/bash
 
 create_tables() {
-  for TABLE_FILE in $TABLE_FILES; do
+  for TABLE_FILE in "${TABLE_FILES[@]}"; do
     echo -e "Creating table from file [$TABLE_FILE]"
     awslocal dynamodb create-table --cli-input-json file://"$TABLE_FILE" >> /dev/null
   done
 }
 
 load_data() {
-  for DATA_FILE in $DATA_FILES; do
+  for DATA_FILE in "${DATA_FILES[@]}"; do
     echo -e "Loading data from file [$DATA_FILE]"
     awslocal dynamodb put-item --cli-input-json file://"$DATA_FILE" >> /dev/null
   done
