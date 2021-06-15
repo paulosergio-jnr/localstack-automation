@@ -1,0 +1,12 @@
+{
+  "TopicArn": "arn:aws:sns:sa-east-1:000000000000:test-topic",
+  "Message": "{\"default\": \"default message\", \"content\": \"this is a test\"}",
+  "MessageStructure": "json",
+  "MessageAttributes": {
+    "UniqueId": {
+      "DataType": "String",
+      "StringValue": "unique-id",
+      "BinaryValue": "ByteArray"
+    }
+  }
+}

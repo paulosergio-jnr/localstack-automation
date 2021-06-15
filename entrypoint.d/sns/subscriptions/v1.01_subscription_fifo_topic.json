@@ -1,0 +1,5 @@
+{
+  "TopicArn": "arn:aws:sns:sa-east-1:000000000000:fifo-topic.fifo",
+  "Protocol": "sqs",
+  "Endpoint": "arn:aws:sqs:sa-east-1:000000000000:q-test.fifo"
+}

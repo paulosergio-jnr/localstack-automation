@@ -1,0 +1,14 @@
+{
+  "TopicArn": "arn:aws:sns:sa-east-1:000000000000:fifo-topic.fifo",
+  "Message": "{\"default\": \"default message\", \"content\": \"this is a test\"}",
+  "MessageStructure": "json",
+  "MessageAttributes": {
+    "UniqueId": {
+      "DataType": "String",
+      "StringValue": "unique-id",
+      "BinaryValue": "ByteArray"
+    }
+  },
+  "MessageDeduplicationId": "dedup-id",
+  "MessageGroupId": "group-test"
+}

@@ -1,0 +1,6 @@
+{
+  "Name": "test-topic",
+  "Attributes": {
+    "FifoTopic": "false"
+  }
+}

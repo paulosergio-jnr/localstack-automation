@@ -1,0 +1,7 @@
+{
+  "Name": "fifo-topic.fifo",
+  "Attributes": {
+    "FifoTopic": "true",
+    "ContentBasedDeduplication": "true"
+  }
+}
