@@ -5,6 +5,9 @@ create_tables() {
     echo -e "Creating table from file [$TABLE_FILE]"
     awslocal dynamodb create-table --cli-input-json file://"$TABLE_FILE" >> /dev/null
   done
+
+  echo -e "Created tables: "
+  awslocal dynamodb list-tables
 }
 
 load_data() {
@@ -41,3 +44,4 @@ fi
 echo -e "+--------------------------------------+"
 echo -e "| Finished DynamoDB workloads creation |"
 echo -e "+--------------------------------------+"
+echo -e ""
