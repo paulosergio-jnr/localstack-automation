@@ -5,6 +5,9 @@ create_queues() {
     echo -e "Creating queue from file [$QUEUE_FILE]"
     awslocal sqs create-queue --cli-input-json file://"$QUEUE_FILE" >>/dev/null
   done
+
+  echo -e "Created queues: "
+  awslocal sqs list-queues
 }
 
 send_messages() {
@@ -41,3 +44,4 @@ fi
 echo -e "+---------------------------------+"
 echo -e "| Finished SQS workloads creation |"
 echo -e "+---------------------------------+"
+echo -e ""
